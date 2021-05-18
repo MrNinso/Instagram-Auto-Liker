@@ -1,18 +1,20 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import WebDriverException
+from pprint import pprint
 import time
-
+import sys
 
 def main():
-    id = '__your-instagram-username__'
-    passd = '__your-instagram-password__'
+    id = '__USUARIO__'
+    passd = '__SENHA__'
     try:
         url = 'https://www.instagram.com'
         chrome_options = webdriver.ChromeOptions()
         prefs = {"profile.default_content_setting_values.notifications" : 2}
         chrome_options.add_experimental_option("prefs",prefs)
 
-        driver = webdriver.Chrome(chrome_options=chrome_options)
+        driver = webdriver.Chrome(options=chrome_options, executable_path='./chromedriver.exe')
         driver.get(url)
 
         #driver.set_window_size(1080,720)
@@ -21,8 +23,9 @@ def main():
 
         assert "Instagram" in driver.title
 
-        elem = driver.find_element_by_class_name('_fcn8k')
-        elem.click()
+        #elem = driver.find_element_by_class_name('_fcn8k')
+        #elem = driver.find_element_by_class_name('_2hvTZ')
+        #elem.click()
 
         time.sleep(5)
 
@@ -45,8 +48,8 @@ def main():
 
         # Close the tab/browser when done
         driver.close()
-    except:
-        print "error"
+    except WebDriverException as w:
+        print("error", str(w))
 
 def liker(like,driver):
 
