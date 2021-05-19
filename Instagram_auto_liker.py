@@ -37,13 +37,19 @@ def main():
 
         password.send_keys(Keys.ENTER)
 
-        time.sleep(2)
+        time.sleep(3)
 
-        like = driver.find_elements_by_link_text('Like')
+        NotSave = driver.find_elements_by_class_name("sqdOP")
+        NotSave[1].click()
 
-        for i in range(0,10):
+        likes = driver.find_elements_by_class_name('wpO6b')
+
+        #for i in range(0,10):
             #scrolling(driver)
-            liker(like,driver)
+        #         liker(like,driver)
+
+        for l in likes:
+            l.click()
 
 
         # Close the tab/browser when done
