@@ -42,17 +42,24 @@ def main():
         NotSave = driver.find_elements_by_class_name("sqdOP")
         NotSave[1].click()
 
-        likes = driver.find_elements_by_class_name('wpO6b')
 
         #for i in range(0,10):
             #scrolling(driver)
         #         liker(like,driver)
 
+        likes = driver.find_elements_by_class_name("fr66n")
+        
         for l in likes:
-            l.click()
+            btn = l.find_element_by_tag_name("button")
+            status = btn.find_element_by_tag_name("svg").get_attribute("aria-label")
+            if status == "Like":
+                btn.click()
+                print("Like")
 
+        time.sleep(30)
 
         # Close the tab/browser when done
+
         driver.close()
     except WebDriverException as w:
         print("error", str(w))
