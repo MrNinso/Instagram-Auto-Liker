@@ -60,6 +60,14 @@ def main():
                         time.sleep(1)
                 except WebDriverException as w:
                      print("error", str(w))
+            
+            scroll = driver.execute_script("return document.documentElement.scrollTop || document.body.scrollTop;")
+
+            # The end of the page has arrived ?
+            if scroll != pos:
+                driver.execute_script("document.location.reload(true)")
+                time.sleep(5)
+                pos = 0
 
         # Close the tab/browser when done
 
