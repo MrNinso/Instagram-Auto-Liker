@@ -14,7 +14,7 @@ def main():
         prefs = {"profile.default_content_setting_values.notifications" : 2}
         chrome_options.add_experimental_option("prefs",prefs)
 
-        driver = webdriver.Chrome(options=chrome_options, executable_path='./chromedriver')
+        driver = webdriver.Chrome(options=chrome_options, executable_path='./chromedriver.exe')
         driver.get(url)
         driver.maximize_window()
 
